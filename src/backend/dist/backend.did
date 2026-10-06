@@ -1,0 +1,674 @@
+type WinRecord = 
+ record {
+   claimedAt: Timestamp;
+   number: BetNumber;
+   payout: Lucky;
+   round: nat;
+   tier: nat;
+ };
+type WinHistoryPage = 
+ record {
+   items: vec WinRecord;
+   nextOffset: opt nat;
+   total: nat;
+ };
+type WalletTransferRecord = 
+ record {
+   amount: nat;
+   asset: TransferAsset;
+   counterparty: principal;
+   createdAt: Timestamp;
+   direction: TransferDirection;
+   fee: nat;
+   id: nat;
+   status: TransferStatus;
+ };
+type WalletBalances = 
+ record {
+   icpE8s: IcpE8s;
+   icpFeeE8s: IcpE8s;
+   lucky: Lucky;
+ };
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type TransferStatus = 
+ variant {
+   completed;
+   failed;
+   pending;
+ };
+type TransferResult = 
+ variant {
+   Err: TransferError;
+   Ok: nat;
+ };
+type TransferFromResult = 
+ variant {
+   Err: TransferFromError;
+   Ok: nat;
+ };
+type TransferFromError = 
+ variant {
+   BadBurn: record {min_burn_amount: Lucky;};
+   BadFee: record {expected_fee: Lucky;};
+   CreatedInFuture: record {ledger_time: nat64;};
+   Duplicate: record {duplicate_of: nat;};
+   GenericError: record {
+                   error_code: nat;
+                   message: text;
+                 };
+   InsufficientAllowance: record {allowance: Lucky;};
+   InsufficientFunds: record {balance: Lucky;};
+   TemporarilyUnavailable;
+   TooOld;
+ };
+type TransferFromArg = 
+ record {
+   amount: Lucky;
+   created_at_time: opt nat64;
+   fee: opt Lucky;
+   from: Account;
+   memo: opt blob;
+   spender_subaccount: opt blob;
+   to: Account;
+ };
+type TransferError = 
+ variant {
+   BadBurn: record {min_burn_amount: Lucky;};
+   BadFee: record {expected_fee: Lucky;};
+   CreatedInFuture: record {ledger_time: nat64;};
+   Duplicate: record {duplicate_of: nat;};
+   GenericError: record {
+                   error_code: nat;
+                   message: text;
+                 };
+   InsufficientFunds: record {balance: Lucky;};
+   TemporarilyUnavailable;
+   TooOld;
+ };
+type TransferDirection = 
+ variant {
+   incoming;
+   outgoing;
+ };
+type TransferAsset = 
+ variant {
+   icp;
+   lucky;
+ };
+type TransferArg = 
+ record {
+   amount: Lucky;
+   created_at_time: opt nat64;
+   fee: opt Lucky;
+   from_subaccount: opt blob;
+   memo: opt blob;
+   to: Account;
+ };
+type TransactionKind = 
+ variant {
+   approve;
+   mint;
+   transfer;
+   transferFrom;
+ };
+type Transaction = 
+ record {
+   amount: Lucky;
+   fee: Lucky;
+   from: opt Account;
+   index: nat;
+   kind: TransactionKind;
+   memo: opt blob;
+   timestamp: Timestamp;
+   to: opt Account;
+ };
+type TopBetNumber = 
+ record {
+   number: BetNumber;
+   ticketCount: nat;
+ };
+type TokenMetadata = 
+ record {
+   decimals: nat8;
+   fee: Lucky;
+   logo: text;
+   name: text;
+   symbol: text;
+ };
+type TokenInfo = 
+ record {
+   metadata: TokenMetadata;
+   totalSupply: Lucky;
+ };
+type Timestamp = int;
+type TierResult = 
+ record {
+   distributed: Lucky;
+   payoutPerTicket: Lucky;
+   tier: nat;
+   winningTickets: nat;
+ };
+type SupportedStandard = 
+ record {
+   name: text;
+   url: text;
+ };
+type RoundHistoryEntry = 
+ record {
+   crowdfundTotal: Lucky;
+   finishedAt: Timestamp;
+   positions: vec PositionBasis;
+   round: nat;
+   totalDistributed: Lucky;
+   totalPrizePool: Lucky;
+   winningNumber: BetNumber;
+ };
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type PositionCrowdfund = 
+ record {
+   digits: vec DigitCrowdfund;
+   leadingDigit: Digit;
+   lockedDigit: opt Digit;
+   position: Position;
+ };
+type PositionBasis = 
+ record {
+   digitAmounts: vec Lucky;
+   locked: bool;
+   position: Position;
+   winningAmount: Lucky;
+   winningDigit: Digit;
+ };
+type Position = nat;
+type PlayerProfile = 
+ record {
+   actionCooldownMs: nat;
+   betCount: nat;
+   identity: PlayerIdentity;
+   lastActionAt: Timestamp;
+   luckyBalance: Lucky;
+   winCount: nat;
+ };
+type PlayerIdentity = 
+ variant {
+   conspirator;
+   manipulator;
+   player;
+ };
+type Phase = 
+ variant {
+   betting;
+   crowdfunding;
+   drawing;
+   payout;
+ };
+type MintResult = 
+ record {
+   amount: Lucky;
+   blockIndex: nat;
+   to: Account;
+   totalSupply: Lucky;
+ };
+type MintOutcome = 
+ variant {
+   err: GameError;
+   ok: MintResult;
+ };
+type MintArg = 
+ record {
+   amount: Lucky;
+   memo: opt blob;
+   to: Account;
+ };
+type MigrateBalanceResult = 
+ record {
+   amount: Lucky;
+   blockIndex: nat;
+   to: Account;
+   totalSupply: Lucky;
+ };
+type MigrateBalanceOutcome = 
+ variant {
+   err: GameError;
+   ok: MigrateBalanceResult;
+ };
+type MigrateBalanceArg = 
+ record {
+   owner: principal;
+   subaccount: opt blob;
+ };
+type MetadataValue = 
+ variant {
+   Blob: blob;
+   Int: int;
+   Nat: nat;
+   Text: text;
+ };
+type MetadataEntry = 
+ record {
+   key: text;
+   value: MetadataValue;
+ };
+type Lucky = nat;
+type LedgerBalance = 
+ record {
+   balance: Lucky;
+   fee: Lucky;
+ };
+type IcpE8s = nat;
+type GuideText = 
+ record {
+   isSet: bool;
+   "text": text;
+ };
+type GameState = 
+ record {
+   bettingDeadline: Timestamp;
+   crowdfundTotal: Lucky;
+   crowdfundingDeadline: Timestamp;
+   exchangePoolIcp: IcpE8s;
+   exchangePoolLucky: Lucky;
+   phase: Phase;
+   phaseDeadline: Timestamp;
+   positions: vec PositionCrowdfund;
+   round: nat;
+   roundStopped: bool;
+   totalPrizePool: Lucky;
+   treasuryBalance: Lucky;
+   winningNumber: opt BetNumber;
+ };
+type GameError = 
+ variant {
+   amountTooLarge: record {max: nat;};
+   amountTooSmall: record {min: nat;};
+   insufficientBalance: record {
+                          available: Lucky;
+                          required: Lucky;
+                        };
+   invalidAmount: record {step: nat;};
+   invalidBetNumber;
+   invalidPosition;
+   invalidRecipient;
+   ledgerUnavailable: record {reason: text;};
+   notRegistered;
+   ok;
+   phaseClosed: record {
+                  current: Phase;
+                  required: Phase;
+                };
+   poolInsufficient: record {
+                       available: nat;
+                       token: text;
+                     };
+   rateLimited: record {remainingMs: nat;};
+   roundNotFound: record {round: nat;};
+   roundStopped;
+ };
+type ExchangePoolState = 
+ record {
+   icpBalance: IcpE8s;
+   luckyBalance: Lucky;
+ };
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type DrawResult = 
+ record {
+   callerTier: opt nat;
+   callerWinnings: Lucky;
+   round: nat;
+   tiers: vec TierResult;
+   winningNumber: BetNumber;
+ };
+type DigitCrowdfund = 
+ record {
+   amount: Lucky;
+   digit: Digit;
+   reachedAt: opt Timestamp;
+   thresholdReached: bool;
+ };
+type Digit = nat;
+type DepositAddress = 
+ record {
+   accountText: text;
+   owner: principal;
+   subaccount: blob;
+ };
+type DailyStatsOutcome = 
+ variant {
+   err: GameError;
+   ok: vec DailyStatsEntry;
+ };
+type DailyStatsEntry = 
+ record {
+   date: text;
+   stats: DailyStats;
+ };
+type DailyStats = 
+ record {
+   totalBets: Lucky;
+   totalPayouts: Lucky;
+   treasuryIncome: Lucky;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type BlockPage = 
+ record {
+   nextIndex: opt nat;
+   transactions: vec Transaction;
+ };
+type BetRecord = 
+ record {
+   cost: Lucky;
+   number: BetNumber;
+   placedAt: Timestamp;
+   round: nat;
+   ticketCount: nat;
+ };
+type BetNumber = vec Digit;
+type BetHistoryPage = 
+ record {
+   items: vec BetRecord;
+   nextOffset: opt nat;
+   total: nat;
+ };
+type ApproveResult = 
+ variant {
+   Err: ApproveError;
+   Ok: nat;
+ };
+type ApproveError = 
+ variant {
+   AllowanceChanged: record {current_allowance: Lucky;};
+   BadFee: record {expected_fee: Lucky;};
+   CreatedInFuture: record {ledger_time: nat64;};
+   Duplicate: record {duplicate_of: nat;};
+   Expired: record {ledger_time: nat64;};
+   GenericError: record {
+                   error_code: nat;
+                   message: text;
+                 };
+   InsufficientFunds: record {balance: Lucky;};
+   TemporarilyUnavailable;
+   TooOld;
+ };
+type ApproveArg = 
+ record {
+   amount: Lucky;
+   created_at_time: opt nat64;
+   expected_allowance: opt Lucky;
+   expires_at: opt nat64;
+   fee: opt Lucky;
+   from_subaccount: opt blob;
+   memo: opt blob;
+   spender: Account;
+ };
+type AllowanceArg = 
+ record {
+   account: Account;
+   spender: Account;
+ };
+type Allowance = 
+ record {
+   allowance: Lucky;
+   expires_at: opt nat64;
+ };
+type AdminWithdrawResult = 
+ record {
+   amount: nat;
+   pool: AdminPool;
+   recipient: principal;
+   remaining: nat;
+ };
+type AdminWithdrawOutcome = 
+ variant {
+   err: GameError;
+   ok: AdminWithdrawResult;
+ };
+type AdminUserListOutcome = 
+ variant {
+   err: GameError;
+   ok: vec AdminUserEntry;
+ };
+type AdminUserEntry = 
+ record {
+   "principal": principal;
+   role: UserRole;
+ };
+type AdminStatus = 
+ record {
+   balances: AdminPoolBalances;
+   roundStopped: bool;
+ };
+type AdminRoleChangeOutcome = 
+ variant {
+   err: GameError;
+   ok: AdminUserEntry;
+ };
+type AdminResetResult = 
+ record {
+   playersCleared: nat;
+   round: nat;
+ };
+type AdminResetOutcome = 
+ variant {
+   err: GameError;
+   ok: AdminResetResult;
+ };
+type AdminPoolBalances = 
+ record {
+   exchangeIcp: IcpE8s;
+   exchangeLucky: Lucky;
+   prizePool: Lucky;
+   treasury: Lucky;
+ };
+type AdminPool = 
+ variant {
+   exchangeIcp;
+   exchangeLucky;
+   prizePool;
+   treasury;
+ };
+type Account = 
+ record {
+   owner: principal;
+   subaccount: opt blob;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  /// Contribute `amount` Lucky to `digit` at `position` (1-3). Crowdfunding
+  /// phase only, positive integer multiple of 1, max 100_000 per call.
+  contributeCrowdfund: (position: Position, digit: Digit, amount: Lucky) ->
+   (GameError);
+  /// Demote a user to `#user`. Admin only.
+  demoteToUser: (user: principal) -> (AdminRoleChangeOutcome);
+  /// Fast-forward the round clock so the current round completes its full
+  /// cycle. Admin only.
+  devAdvanceRound: () -> (GameError);
+  /// Credit `amount` Lucky to the caller's own balance. Admin only.
+  devSeedBalance: (amount: nat) -> (GameError);
+  /// Set the current round's elapsed time to `elapsedNs` for deterministic
+  /// testing. Admin only.
+  devSetRoundElapsed: (elapsedNs: int) -> (GameError);
+  /// Exchange ICP (e8s) for Lucky at the fixed 1 ICP = 1000 Lucky rate.
+  /// Minimum 0.1 ICP, must be a multiple of 0.1 ICP, max 10_000 ICP.
+  exchangeIcpToLucky: (icpE8s: IcpE8s) -> (GameError);
+  /// Exchange Lucky for ICP at the fixed rate. Amount must be a positive
+  /// multiple of 1000, max 10_000_000 Lucky, with a 3% Lucky fee.
+  exchangeLuckyToIcp: (luckyAmount: Lucky) -> (GameError);
+  execute: (qJson: text) -> (Result) query;
+  /// Admin control snapshot: stopped flag and current pool balances.
+  getAdminStatus: () -> (AdminStatus) query;
+  /// Markdown description of the public API: methods, authorization, units,
+  /// round lifecycle, polling guidance, retry safety and error variants.
+  getApiDoc: () -> (text) query;
+  /// The caller's own platform role.
+  getCallerRole: () -> (UserRole) query;
+  getCallerUserRole: () -> (UserRole) query;
+  /// Per-UTC-day statistics for the inclusive range `fromDate..toDate`
+  /// (`YYYY-MM-DD`): total bets placed, total payouts distributed and treasury
+  /// income from prize-pool cap overflow. Days with no activity are returned
+  /// with zero values. Admin only; non-admins receive `#err`.
+  getDailyStats: (fromDate: text, toDate: text) -> (DailyStatsOutcome) query;
+  /// Caller's own ICP deposit address (canister principal + per-user
+  /// subaccount) so the user can receive ICP.
+  getDepositAddress: () -> (DepositAddress) query;
+  /// Draw result of a round: winning number, per-tier counts and payouts,
+  /// and the caller's own winnings.
+  getDrawResult: (round: nat) -> (opt DrawResult) query;
+  /// Current exchange pool balances (ICP in e8s, Lucky).
+  getExchangePoolState: () -> (ExchangePoolState) query;
+  /// Current round state: round number, phase, deadlines, prize pool,
+  /// crowdfund total, treasury, exchange pool and per-position crowdfund data.
+  getGameState: () -> (GameState) query;
+  /// The saved guide text plus whether an admin has set one. Pure read.
+  getGuideText: () -> (GuideText) query;
+  /// The caller's ledger balance plus the ledger fee.
+  getLedgerBalance: () -> (LedgerBalance) query;
+  /// One page of the caller's bet history, newest first. `offset` skips that
+  /// many newest records; `limit` is capped server-side.
+  getMyBetHistory: (offset: nat, limit: nat) -> (BetHistoryPage) query;
+  /// The caller's own bounded profile: Lucky balance, identity, last action
+  /// timestamp, action cooldown, and total bet/win counts. History is read
+  /// through the paginated endpoints below.
+  getMyProfile: () -> (PlayerProfile) query;
+  /// One page of the caller's win history, newest first. `offset` skips that
+  /// many newest records; `limit` is capped server-side.
+  getMyWinHistory: (offset: nat, limit: nat) -> (WinHistoryPage) query;
+  /// Caller's most recent wallet transfer records, newest first (bounded list).
+  getRecentTransfers: () -> (vec WalletTransferRecord) query;
+  /// Recent completed rounds, newest first.
+  getRoundHistory: (limit: nat) -> (vec RoundHistoryEntry) query;
+  /// Token snapshot for the admin token panel: metadata plus total supply.
+  getTokenInfo: () -> (TokenInfo) query;
+  /// The top-10 most-bet numbers with their ticket counts.
+  getTopBetNumbers: () -> (vec TopBetNumber) query;
+  /// Current DAO treasury balance in Lucky.
+  getTreasuryBalance: () -> (Lucky) query;
+  /// Caller's wallet balances: Lucky plus the real ICP balance held by the
+  /// canister on the ICP ledger, and the ledger transfer fee.
+  getWalletBalances: () -> (WalletBalances);
+  /// Balance of one account.
+  icrc1_balance_of: (account: Account) -> (Lucky) query;
+  /// Number of decimals (0).
+  icrc1_decimals: () -> (nat8) query;
+  /// Ledger transfer fee (0).
+  icrc1_fee: () -> (Lucky) query;
+  /// Full ICRC-1 metadata map, including `icrc1:logo`.
+  icrc1_metadata: () -> (vec MetadataEntry) query;
+  /// Token name (`Lucky`).
+  icrc1_name: () -> (text) query;
+  /// The standards this ledger supports (ICRC-1 and ICRC-2).
+  icrc1_supported_standards: () -> (vec SupportedStandard) query;
+  /// Token symbol (`LUCKY`).
+  icrc1_symbol: () -> (text) query;
+  /// Cumulative minted supply (uncapped).
+  icrc1_total_supply: () -> (Lucky) query;
+  /// Transfer Lucky from the caller's account to `arg.to`.
+  icrc1_transfer: (arg: TransferArg) -> (TransferResult);
+  /// Allowance of `arg.spender` over `arg.account`.
+  icrc2_allowance: (arg: AllowanceArg) -> (Allowance) query;
+  /// Grant `arg.spender` an allowance over the caller's account.
+  icrc2_approve: (arg: ApproveArg) -> (ApproveResult);
+  /// Move tokens from `arg.from` to `arg.to` under an allowance held by the
+  /// caller as spender.
+  icrc2_transfer_from: (arg: TransferFromArg) -> (TransferFromResult);
+  /// A page of the ledger transaction log, optionally filtered to one account.
+  icrc3_get_blocks: (start: nat, length: nat, account: opt Account) ->
+   (BlockPage) query;
+  isCallerAdmin: () -> (bool) query;
+  /// Deprecated alias: whether the caller is an admin (platform `#admin` role
+  /// or canister controller). The frontend should prefer the package's
+  /// `isCallerAdmin`.
+  isCallerController: () -> (bool) query;
+  /// List every registered user with their current role. Admin only.
+  listUsers: () -> (AdminUserListOutcome) query;
+  /// Migrate one player's internal Lucky balance into the ledger. Admin only.
+  migrateInternalLucky: (arg: MigrateBalanceArg) -> (MigrateBalanceOutcome);
+  /// Mint `arg.amount` Lucky into `arg.to`. Admin only; uncapped.
+  mintLucky: (arg: MintArg) -> (MintOutcome);
+  /// Place `count` tickets on a 7-digit number. 1 Lucky per ticket, betting
+  /// phase only.
+  placeBet: (number: BetNumber, count: nat) -> (GameError);
+  /// Place a complex (复式) bet from a per-position selection structure.
+  /// `selections` holds one array of selected digits per position (7 positions)
+  /// and `counts` the number of selected digits per position; the total ticket
+  /// count is the product of the per-position counts. The backend expands the
+  /// cartesian product itself, so the frontend never materializes it. One
+  /// 3-second cooldown and one summed deduction, exactly like `placeBets`.
+  placeBetSelections: (selections: vec vec Digit, counts: vec nat) ->
+   (GameError);
+  /// Place several distinct 7-digit numbers in one call, each with its own
+  /// ticket count. A complex (复式) submission is sent here as a single game
+  /// action: one 3-second cooldown, one summed deduction into the prize pool.
+  /// `numbers` and `counts` must be the same length; each count must be >= 1.
+  placeBets: (numbers: vec BetNumber, counts: vec nat) -> (GameError);
+  /// Promote a user to `#admin`. Admin only.
+  promoteToAdmin: (user: principal) -> (AdminRoleChangeOutcome);
+  /// Reset all game data back to its initial state. Admin only.
+  resetGameData: () -> (AdminResetOutcome);
+  /// Resume a stopped round. Admin only.
+  resumeRound: () -> (GameError);
+  schema: () -> (text) query;
+  /// Save the guide text. Admin only.
+  setGuideText: ("text": text) -> (GameError);
+  /// Stop the current/next round: no new bets and no crowdfund contributions
+  /// until an admin resumes. Admin only.
+  stopNextRound: () -> (GameError);
+  /// Send ICP (e8s) from the caller's balance to an arbitrary recipient
+  /// principal, validating the balance and the ledger transfer fee.
+  transferIcp: (recipient: principal, amount: IcpE8s) -> (GameError);
+  /// Transfer Lucky from the caller's balance to another principal.
+  transferLucky: (recipient: principal, amount: Lucky) -> (GameError);
+  /// Withdraw `amount` from `pool` to `recipient`. Admin only.
+  withdrawFromPool: (pool: AdminPool, amount: nat, recipient: principal) ->
+   (AdminWithdrawOutcome);
+}

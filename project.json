@@ -1,0 +1,19 @@
+{
+  "overview": "为 博弈终端 增加真正的 Lucky ICRC-2 代币账本，支持管理员铸造与四叶草图标。",
+  "features": [
+    "真正的 Lucky ICRC-2 代币账本（ICRC-1 基础 + ICRC-2 授权）",
+    "管理员铸造 Lucky，总量无上限",
+    "代币元数据与四叶草图标",
+    "管理控制台代币面板与铸造表单",
+    "钱包 Lucky 余额与转账对接真实账本"
+  ],
+  "category": "token-ledger",
+  "tags": [
+    "icrc-2",
+    "token",
+    "ledger",
+    "admin",
+    "motoko"
+  ],
+  "last_updated": "2026-10-02T06:18:43.723Z"
+}

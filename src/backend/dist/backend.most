@@ -1,0 +1,1304 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type Account__102966845 = {owner : Principal; subaccount : ?Blob};
+type Account__383935140 = {owner : Principal; subaccount : ?Blob};
+type AllowanceEntry__485523196 =
+  {var amount : Lucky__319762161; var expiresAt : ?Nat64};
+type AllowanceEntry__670486436 =
+  {var amount : Lucky__744857294; var expiresAt : ?Nat64};
+type BetNumber__31378595 = BetNumber__785679467;
+type BetNumber__315311916 = [Digit__656961429];
+type BetNumber__343937161 = [Digit__742852037];
+type BetNumber__534415177 = [Digit__820819472];
+type BetNumber__547733022 = BetNumber__785679467;
+type BetNumber__58783029 = [Digit__123868251];
+type BetNumber__602429267 = [Digit__271267326];
+type BetNumber__64178719 = [Digit__548285826];
+type BetNumber__785679467 = [Digit__1032274811];
+type BetNumber__962249457 = [Digit__573103048];
+type BetRecord__1055176027 =
+  {
+    cost : Lucky__188274285;
+    number : BetNumber__962249457;
+    placedAt : Timestamp__771871407;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__160599345 =
+  {
+    cost : Lucky__404091968;
+    number : BetNumber__547733022;
+    placedAt : Timestamp__93733298;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__165590704 =
+  {
+    cost : Lucky__324431163;
+    number : BetNumber__58783029;
+    placedAt : Timestamp__585882325;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__373087870 =
+  {
+    cost : Lucky__744857294;
+    number : BetNumber__534415177;
+    placedAt : Timestamp__119952694;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__561709801 =
+  {
+    cost : Lucky__148975733;
+    number : BetNumber__315311916;
+    placedAt : Timestamp__1022655806;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__580342141 =
+  {
+    cost : Lucky__879448869;
+    number : BetNumber__602429267;
+    placedAt : Timestamp__488810885;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__882872824 =
+  {
+    cost : Lucky__848420377;
+    number : BetNumber__343937161;
+    placedAt : Timestamp__186131649;
+    round : Nat;
+    ticketCount : Nat
+  };
+type BetRecord__973918319 =
+  {
+    cost : Lucky__1058331478;
+    number : BetNumber__64178719;
+    placedAt : Timestamp__528289002;
+    round : Nat;
+    ticketCount : Nat
+  };
+type ComplexBet__103643892 =
+  {counts : [Nat]; selections : [[Digit__271267326]]; ticketCount : Nat};
+type ComplexBet__1051846322 =
+  {counts : [Nat]; selections : [[Digit__656961429]]; ticketCount : Nat};
+type ComplexBet__298962855 =
+  {counts : [Nat]; selections : [[Digit__820819472]]; ticketCount : Nat};
+type ComplexBet__383675630 =
+  {counts : [Nat]; selections : [[Digit__742852037]]; ticketCount : Nat};
+type ComplexBet__390263280 =
+  {counts : [Nat]; selections : [[Digit__548285826]]; ticketCount : Nat};
+type ComplexBet__616944684 =
+  {counts : [Nat]; selections : [[Digit__351503925]]; ticketCount : Nat};
+type DailyStats__143887938 =
+  {
+    totalBets : Lucky__483622893;
+    totalPayouts : Lucky__483622893;
+    treasuryIncome : Lucky__483622893
+  };
+type DailyStats__460949095 =
+  {
+    totalBets : Lucky__744857294;
+    totalPayouts : Lucky__744857294;
+    treasuryIncome : Lucky__744857294
+  };
+type DailyStats__889961534 =
+  {
+    totalBets : Lucky__848420377;
+    totalPayouts : Lucky__848420377;
+    treasuryIncome : Lucky__848420377
+  };
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type DigitFund__248238026 =
+  {var amount : Lucky__148975733; var reachedAt : ?Timestamp__1022655806};
+type DigitFund__461807010 =
+  {var amount : Lucky__744857294; var reachedAt : ?Timestamp__119952694};
+type DigitFund__596172951 =
+  {var amount : Lucky__879448869; var reachedAt : ?Timestamp__488810885};
+type DigitFund__670223487 =
+  {var amount : Lucky__335479488; var reachedAt : ?Timestamp__467031675};
+type DigitFund__717654182 =
+  {var amount : Lucky__848420377; var reachedAt : ?Timestamp__186131649};
+type DigitFund__780962386 =
+  {var amount : Lucky__1058331478; var reachedAt : ?Timestamp__528289002};
+type DigitFund__799887420 =
+  {var amount : Lucky__188274285; var reachedAt : ?Timestamp__771871407};
+type DigitFund__84908401 =
+  {var amount : Lucky__324431163; var reachedAt : ?Timestamp__585882325};
+type Digit__1032274811 = Nat;
+type Digit__123868251 = Nat;
+type Digit__271267326 = Nat;
+type Digit__351503925 = Digit__1032274811;
+type Digit__548285826 = Nat;
+type Digit__573103048 = Nat;
+type Digit__656961429 = Nat;
+type Digit__742852037 = Nat;
+type Digit__820819472 = Nat;
+type Digit__89527581 = Digit__1032274811;
+type GameState__22599413 =
+  {
+    var crowdfundTotal : Lucky__324431163;
+    var draws : Map__230067015<Nat, StoredDraw__338683802>;
+    var exchangePoolIcp : IcpE8s__918952364;
+    var exchangePoolLucky : Lucky__324431163;
+    var history : List__836382695<RoundHistoryEntry__885748767>;
+    var players : Map__230067015<Principal, PlayerAccount__298450883>;
+    var positions : [var PositionFund__993508412];
+    var round : Nat;
+    var roundStart : Timestamp__585882325;
+    var tally : Map__230067015<BetNumber__58783029, Nat>;
+    var topBets : TopBets__215618448;
+    var totalPrizePool : Lucky__324431163;
+    var treasuryBalance : Lucky__324431163;
+    var winningNumber : ?BetNumber__58783029
+  };
+type GameState__251464707 =
+  {
+    var complexBets : List__836382695<ComplexBet__390263280>;
+    var crowdfundTotal : Lucky__1058331478;
+    var draws : Map__230067015<Nat, StoredDraw__765868276>;
+    var exchangePoolIcp : IcpE8s__267559326;
+    var exchangePoolLucky : Lucky__1058331478;
+    var history : List__836382695<RoundHistoryEntry__248228263>;
+    var players : Map__230067015<Principal, PlayerAccount__331934882>;
+    var positions : [var PositionFund__583555977];
+    var round : Nat;
+    var roundStart : Timestamp__528289002;
+    var tally : Map__230067015<BetNumber__64178719, Nat>;
+    var topBets : TopBets__802155643;
+    var totalPrizePool : Lucky__1058331478;
+    var treasuryBalance : Lucky__1058331478;
+    var winningNumber : ?BetNumber__64178719
+  };
+type GameState__365264998 =
+  {
+    var complexBets : List__836382695<ComplexBet__103643892>;
+    var crowdfundTotal : Lucky__879448869;
+    var draws : Map__230067015<Nat, StoredDraw__868663217>;
+    var exchangePoolIcp : IcpE8s__694396631;
+    var exchangePoolLucky : Lucky__879448869;
+    var guideText : Text;
+    var history : List__836382695<RoundHistoryEntry__605305742>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__202042337>;
+    var positions : [var PositionFund__142333031];
+    var round : Nat;
+    var roundStart : Timestamp__488810885;
+    var roundStopped : Bool;
+    var tally : Map__230067015<BetNumber__602429267, Nat>;
+    var topBets : TopBets__493421184;
+    var totalPrizePool : Lucky__879448869;
+    var treasuryBalance : Lucky__879448869;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__70129867>>;
+    var winningNumber : ?BetNumber__602429267
+  };
+type GameState__463473702 =
+  {
+    var complexBets : List__836382695<ComplexBet__298962855>;
+    var crowdfundTotal : Lucky__744857294;
+    var dailyStats : Map__230067015<Text, DailyStats__460949095>;
+    var draws : Map__230067015<Nat, StoredDraw__290240674>;
+    var exchangePoolIcp : IcpE8s__923252561;
+    var exchangePoolLucky : Lucky__744857294;
+    var guideText : Text;
+    var history : List__836382695<RoundHistoryEntry__618300686>;
+    var luckyLedger : LedgerState__714296790;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__809984401>;
+    var positions : [var PositionFund__778870159];
+    var round : Nat;
+    var roundStart : Timestamp__119952694;
+    var roundStopped : Bool;
+    var tally : Map__230067015<BetNumber__534415177, Nat>;
+    var topBets : TopBets__427349154;
+    var totalPrizePool : Lucky__744857294;
+    var treasuryBalance : Lucky__744857294;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__486122419>>;
+    var winningNumber : ?BetNumber__534415177
+  };
+type GameState__529652800 =
+  {
+    var crowdfundTotal : Lucky__188274285;
+    var draws : Map__230067015<Nat, StoredDraw__731864862>;
+    var exchangePoolIcp : IcpE8s__122159697;
+    var exchangePoolLucky : Lucky__188274285;
+    var history : List__836382695<RoundHistoryEntry__798274920>;
+    var players : Map__230067015<Principal, PlayerAccount__48603164>;
+    var positions : [var PositionFund__552240939];
+    var round : Nat;
+    var roundStart : Timestamp__771871407;
+    var tally : Map__230067015<BetNumber__962249457, Nat>;
+    var totalPrizePool : Lucky__188274285;
+    var treasuryBalance : Lucky__188274285;
+    var winningNumber : ?BetNumber__962249457
+  };
+type GameState__608663671 =
+  {
+    var complexBets : List__836382695<ComplexBet__1051846322>;
+    var crowdfundTotal : Lucky__148975733;
+    var draws : Map__230067015<Nat, StoredDraw__790481867>;
+    var exchangePoolIcp : IcpE8s__221375623;
+    var exchangePoolLucky : Lucky__148975733;
+    var history : List__836382695<RoundHistoryEntry__798882448>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__656378714>;
+    var positions : [var PositionFund__902974375];
+    var round : Nat;
+    var roundStart : Timestamp__1022655806;
+    var tally : Map__230067015<BetNumber__315311916, Nat>;
+    var topBets : TopBets__873478237;
+    var totalPrizePool : Lucky__148975733;
+    var treasuryBalance : Lucky__148975733;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__867309832>>;
+    var winningNumber : ?BetNumber__315311916
+  };
+type GameState__788542147 =
+  {
+    var complexBets : List__836382695<ComplexBet__383675630>;
+    var crowdfundTotal : Lucky__848420377;
+    var dailyStats : Map__230067015<Text, DailyStats__889961534>;
+    var draws : Map__230067015<Nat, StoredDraw__651697327>;
+    var exchangePoolIcp : IcpE8s__405898102;
+    var exchangePoolLucky : Lucky__848420377;
+    var guideText : Text;
+    var history : List__836382695<RoundHistoryEntry__354236913>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__190795617>;
+    var positions : [var PositionFund__1056112070];
+    var round : Nat;
+    var roundStart : Timestamp__186131649;
+    var roundStopped : Bool;
+    var tally : Map__230067015<BetNumber__343937161, Nat>;
+    var topBets : TopBets__607211301;
+    var totalPrizePool : Lucky__848420377;
+    var treasuryBalance : Lucky__848420377;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__736460878>>;
+    var winningNumber : ?BetNumber__343937161
+  };
+type IcpE8s__122159697 = Nat;
+type IcpE8s__221375623 = Nat;
+type IcpE8s__267559326 = Nat;
+type IcpE8s__405898102 = Nat;
+type IcpE8s__694396631 = Nat;
+type IcpE8s__918952364 = Nat;
+type IcpE8s__919817650 = Nat;
+type IcpE8s__923252561 = Nat;
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type LedgerState__1009748330 =
+  {
+    var allowances : Map__230067015<Text, AllowanceEntry__485523196>;
+    var balances : Map__230067015<Text, Lucky__319762161>;
+    var blocks : List__836382695<Transaction__626228322>;
+    var totalSupply : Lucky__319762161
+  };
+type LedgerState__714296790 =
+  {
+    var allowances : Map__230067015<Text, AllowanceEntry__670486436>;
+    var balances : Map__230067015<Text, Lucky__744857294>;
+    var blocks : List__836382695<Transaction__200483973>;
+    var totalSupply : Lucky__744857294
+  };
+type List__355132335<T> =
+  {
+    var blockIndex : Nat__227979830;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__227979830
+  };
+type List__836382695<T> = List__355132335<T>;
+type Lucky__1058331478 = Nat;
+type Lucky__148975733 = Nat;
+type Lucky__188274285 = Nat;
+type Lucky__319762161 = Lucky__379705606;
+type Lucky__324431163 = Nat;
+type Lucky__335479488 = Lucky__379705606;
+type Lucky__379705606 = Nat;
+type Lucky__404091968 = Lucky__379705606;
+type Lucky__483622893 = Lucky__379705606;
+type Lucky__744857294 = Nat;
+type Lucky__848420377 = Nat;
+type Lucky__879448869 = Nat;
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__102844085 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__22599413
+  };
+type NewActor__1045774320 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__608663671
+  };
+type NewActor__185423693 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__788542147
+  };
+type NewActor__365537071 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__251464707
+  };
+type NewActor__483640311 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__365264998
+  };
+type NewActor__68623567 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__463473702
+  };
+type NewActor__769816496 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : GameState__529652800
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type OldActor__112540865 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : OldGameState__799402280
+  };
+type OldActor__204222165 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : OldGameState__217700382
+  };
+type OldActor__366068089 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : OldGameState__1072712787
+  };
+type OldActor__512397517 = {};
+type OldActor__854227490 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState :
+      {
+        var crowdfundTotal : Lucky__324431163;
+        var draws : Map__230067015<Nat, StoredDraw__338683802>;
+        var exchangePoolIcp : IcpE8s__918952364;
+        var exchangePoolLucky : Lucky__324431163;
+        var history : List__836382695<RoundHistoryEntry__885748767>;
+        var players : Map__230067015<Principal, OldPlayerAccount__186635166>;
+        var positions : [var PositionFund__993508412];
+        var round : Nat;
+        var roundStart : Timestamp__585882325;
+        var tally : Map__230067015<BetNumber__58783029, Nat>;
+        var totalPrizePool : Lucky__324431163;
+        var treasuryBalance : Lucky__324431163;
+        var winningNumber : ?BetNumber__58783029
+      }
+  };
+type OldActor__894826810 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState :
+      {
+        var crowdfundTotal : Lucky__1058331478;
+        var draws : Map__230067015<Nat, StoredDraw__765868276>;
+        var exchangePoolIcp : IcpE8s__267559326;
+        var exchangePoolLucky : Lucky__1058331478;
+        var history : List__836382695<RoundHistoryEntry__248228263>;
+        var players : Map__230067015<Principal, OldPlayerAccount__1026785624>;
+        var positions : [var PositionFund__583555977];
+        var round : Nat;
+        var roundStart : Timestamp__528289002;
+        var tally : Map__230067015<BetNumber__64178719, Nat>;
+        var topBets : TopBets__802155643;
+        var totalPrizePool : Lucky__1058331478;
+        var treasuryBalance : Lucky__1058331478;
+        var winningNumber : ?BetNumber__64178719
+      }
+  };
+type OldActor__903749565 =
+  {
+    accessControlState : AccessControlState__201339279;
+    gameState : OldGameState__653586827
+  };
+type OldGameState__1072712787 =
+  {
+    var complexBets : List__836382695<ComplexBet__383675630>;
+    var crowdfundTotal : Lucky__848420377;
+    var draws : Map__230067015<Nat, StoredDraw__651697327>;
+    var exchangePoolIcp : IcpE8s__405898102;
+    var exchangePoolLucky : Lucky__848420377;
+    var guideText : Text;
+    var history : List__836382695<RoundHistoryEntry__354236913>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__190795617>;
+    var positions : [var PositionFund__1056112070];
+    var round : Nat;
+    var roundStart : Timestamp__186131649;
+    var roundStopped : Bool;
+    var tally : Map__230067015<BetNumber__343937161, Nat>;
+    var topBets : TopBets__607211301;
+    var totalPrizePool : Lucky__848420377;
+    var treasuryBalance : Lucky__848420377;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__736460878>>;
+    var winningNumber : ?BetNumber__343937161
+  };
+type OldGameState__217700382 =
+  {
+    var complexBets : List__836382695<ComplexBet__298962855>;
+    var crowdfundTotal : Lucky__744857294;
+    var dailyStats : Map__230067015<Text, DailyStats__460949095>;
+    var draws : Map__230067015<Nat, StoredDraw__290240674>;
+    var exchangePoolIcp : IcpE8s__923252561;
+    var exchangePoolLucky : Lucky__744857294;
+    var guideText : Text;
+    var history : List__836382695<RoundHistoryEntry__618300686>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__809984401>;
+    var positions : [var PositionFund__778870159];
+    var round : Nat;
+    var roundStart : Timestamp__119952694;
+    var roundStopped : Bool;
+    var tally : Map__230067015<BetNumber__534415177, Nat>;
+    var topBets : TopBets__427349154;
+    var totalPrizePool : Lucky__744857294;
+    var treasuryBalance : Lucky__744857294;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__486122419>>;
+    var winningNumber : ?BetNumber__534415177
+  };
+type OldGameState__653586827 =
+  {
+    var complexBets : List__836382695<ComplexBet__103643892>;
+    var crowdfundTotal : Lucky__879448869;
+    var draws : Map__230067015<Nat, StoredDraw__868663217>;
+    var exchangePoolIcp : IcpE8s__694396631;
+    var exchangePoolLucky : Lucky__879448869;
+    var history : List__836382695<RoundHistoryEntry__605305742>;
+    var nextTransferId : Nat;
+    var players : Map__230067015<Principal, PlayerAccount__202042337>;
+    var positions : [var PositionFund__142333031];
+    var round : Nat;
+    var roundStart : Timestamp__488810885;
+    var tally : Map__230067015<BetNumber__602429267, Nat>;
+    var topBets : TopBets__493421184;
+    var totalPrizePool : Lucky__879448869;
+    var treasuryBalance : Lucky__879448869;
+    var walletTransfers :
+      Map__230067015<Principal,
+                      List__836382695<WalletTransferRecord__70129867>>;
+    var winningNumber : ?BetNumber__602429267
+  };
+type OldGameState__799402280 =
+  {
+    var complexBets : List__836382695<ComplexBet__1051846322>;
+    var crowdfundTotal : Lucky__148975733;
+    var draws : Map__230067015<Nat, StoredDraw__790481867>;
+    var exchangePoolIcp : IcpE8s__221375623;
+    var exchangePoolLucky : Lucky__148975733;
+    var history : List__836382695<RoundHistoryEntry__798882448>;
+    var players : Map__230067015<Principal, PlayerAccount__656378714>;
+    var positions : [var PositionFund__902974375];
+    var round : Nat;
+    var roundStart : Timestamp__1022655806;
+    var tally : Map__230067015<BetNumber__315311916, Nat>;
+    var topBets : TopBets__873478237;
+    var totalPrizePool : Lucky__148975733;
+    var treasuryBalance : Lucky__148975733;
+    var winningNumber : ?BetNumber__315311916
+  };
+type OldPlayerAccount__1026785624 =
+  {
+    var betHistory : List__836382695<BetRecord__973918319>;
+    var identity : PlayerIdentity__430999911;
+    var lastActionAt : Timestamp__528289002;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__1058331478;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, OldRoundBetAggregate__299455282>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__770431486>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__595516732>
+  };
+type OldPlayerAccount__186635166 =
+  {
+    var betHistory : List__836382695<BetRecord__165590704>;
+    var identity : PlayerIdentity__246291504;
+    var lastActionAt : Timestamp__585882325;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__324431163;
+    var multiPositionRounds : Nat;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__275365756>
+  };
+type OldRoundBetAggregate__299455282 =
+  {numbers : [(BetNumber__64178719, Nat)]; ticketCount : Nat};
+type PlayerAccount__1027814942 =
+  {
+    var betHistory : List__836382695<BetRecord__160599345>;
+    var identity : PlayerIdentity__239259399;
+    var lastActionAt : Timestamp__467031675;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__335479488;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__555254329>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__185763688>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__749737616>
+  };
+type PlayerAccount__190795617 =
+  {
+    var betHistory : List__836382695<BetRecord__882872824>;
+    var identity : PlayerIdentity__793258467;
+    var lastActionAt : Timestamp__186131649;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__848420377;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__502028801>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__842615173>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__287607853>
+  };
+type PlayerAccount__202042337 =
+  {
+    var betHistory : List__836382695<BetRecord__580342141>;
+    var identity : PlayerIdentity__906329034;
+    var lastActionAt : Timestamp__488810885;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__879448869;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__291769388>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__800701612>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__102359353>
+  };
+type PlayerAccount__298450883 =
+  {
+    var betHistory : List__836382695<BetRecord__165590704>;
+    var identity : PlayerIdentity__246291504;
+    var lastActionAt : Timestamp__585882325;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__324431163;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__485557019>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__111287055>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__275365756>
+  };
+type PlayerAccount__331934882 =
+  {
+    var betHistory : List__836382695<BetRecord__973918319>;
+    var identity : PlayerIdentity__430999911;
+    var lastActionAt : Timestamp__528289002;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__1058331478;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__12740606>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__770431486>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__595516732>
+  };
+type PlayerAccount__48603164 =
+  {
+    var betHistory : List__836382695<BetRecord__1055176027>;
+    var identity : PlayerIdentity__177269528;
+    var lastActionAt : Timestamp__771871407;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__188274285;
+    var multiPositionRounds : Nat;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__63604171>
+  };
+type PlayerAccount__656378714 =
+  {
+    var betHistory : List__836382695<BetRecord__561709801>;
+    var identity : PlayerIdentity__197498504;
+    var lastActionAt : Timestamp__1022655806;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__148975733;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__177674479>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__950284446>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__416879402>
+  };
+type PlayerAccount__809984401 =
+  {
+    var betHistory : List__836382695<BetRecord__373087870>;
+    var identity : PlayerIdentity__1026514292;
+    var lastActionAt : Timestamp__119952694;
+    var lastCrowdfundMask : Nat;
+    var lastCrowdfundRound : Nat;
+    var luckyBalance : Lucky__744857294;
+    var multiPositionRounds : Nat;
+    var roundBets : Map__230067015<Nat, RoundBetAggregate__772356513>;
+    var roundWinnings : Map__230067015<Nat, RoundWinnings__1069378470>;
+    var roundsPos1 : Nat;
+    var roundsPos2 : Nat;
+    var roundsPos3 : Nat;
+    var winHistory : List__836382695<WinRecord__744330970>
+  };
+type PlayerIdentity__1026514292 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__177269528 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__197498504 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__239259399 = PlayerIdentity__982379084;
+type PlayerIdentity__246291504 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__430999911 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__793258467 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__906329034 = {#conspirator; #manipulator; #player};
+type PlayerIdentity__982379084 = {#conspirator; #manipulator; #player};
+type PositionBasis__137200606 =
+  {
+    digitAmounts : [Lucky__148975733];
+    locked : Bool;
+    position : Position__665420696;
+    winningAmount : Lucky__148975733;
+    winningDigit : Digit__656961429
+  };
+type PositionBasis__164430011 =
+  {
+    digitAmounts : [Lucky__879448869];
+    locked : Bool;
+    position : Position__297858767;
+    winningAmount : Lucky__879448869;
+    winningDigit : Digit__271267326
+  };
+type PositionBasis__240607100 =
+  {
+    digitAmounts : [Lucky__324431163];
+    locked : Bool;
+    position : Position__556276019;
+    winningAmount : Lucky__324431163;
+    winningDigit : Digit__123868251
+  };
+type PositionBasis__262065762 =
+  {
+    digitAmounts : [Lucky__188274285];
+    locked : Bool;
+    position : Position__634065238;
+    winningAmount : Lucky__188274285;
+    winningDigit : Digit__573103048
+  };
+type PositionBasis__594630663 =
+  {
+    digitAmounts : [Lucky__404091968];
+    locked : Bool;
+    position : Position__621500575;
+    winningAmount : Lucky__404091968;
+    winningDigit : Digit__351503925
+  };
+type PositionBasis__704394584 =
+  {
+    digitAmounts : [Lucky__744857294];
+    locked : Bool;
+    position : Position__1059690206;
+    winningAmount : Lucky__744857294;
+    winningDigit : Digit__820819472
+  };
+type PositionBasis__729430695 =
+  {
+    digitAmounts : [Lucky__848420377];
+    locked : Bool;
+    position : Position__309675291;
+    winningAmount : Lucky__848420377;
+    winningDigit : Digit__742852037
+  };
+type PositionBasis__849909875 =
+  {
+    digitAmounts : [Lucky__1058331478];
+    locked : Bool;
+    position : Position__23724964;
+    winningAmount : Lucky__1058331478;
+    winningDigit : Digit__548285826
+  };
+type PositionFund__1056112070 =
+  {
+    var digits : [var DigitFund__717654182];
+    var lockedDigit : ?Digit__742852037
+  };
+type PositionFund__142333031 =
+  {
+    var digits : [var DigitFund__596172951];
+    var lockedDigit : ?Digit__271267326
+  };
+type PositionFund__552240939 =
+  {
+    var digits : [var DigitFund__799887420];
+    var lockedDigit : ?Digit__573103048
+  };
+type PositionFund__583555977 =
+  {
+    var digits : [var DigitFund__780962386];
+    var lockedDigit : ?Digit__548285826
+  };
+type PositionFund__728394917 =
+  {
+    var digits : [var DigitFund__670223487];
+    var lockedDigit : ?Digit__89527581
+  };
+type PositionFund__778870159 =
+  {
+    var digits : [var DigitFund__461807010];
+    var lockedDigit : ?Digit__820819472
+  };
+type PositionFund__902974375 =
+  {
+    var digits : [var DigitFund__248238026];
+    var lockedDigit : ?Digit__656961429
+  };
+type PositionFund__993508412 =
+  {
+    var digits : [var DigitFund__84908401];
+    var lockedDigit : ?Digit__123868251
+  };
+type Position__1059690206 = Nat;
+type Position__23724964 = Nat;
+type Position__297858767 = Nat;
+type Position__309675291 = Nat;
+type Position__317858640 = Nat;
+type Position__556276019 = Nat;
+type Position__621500575 = Position__317858640;
+type Position__634065238 = Nat;
+type Position__665420696 = Nat;
+type RoundBetAggregate__12740606 =
+  {
+    complexBets : [ComplexBet__390263280];
+    numbers : [(BetNumber__64178719, Nat)];
+    ticketCount : Nat
+  };
+type RoundBetAggregate__177674479 =
+  {
+    complexBets : [ComplexBet__1051846322];
+    numbers : [(BetNumber__315311916, Nat)];
+    ticketCount : Nat
+  };
+type RoundBetAggregate__291769388 =
+  {
+    complexBets : [ComplexBet__103643892];
+    numbers : [(BetNumber__602429267, Nat)];
+    ticketCount : Nat
+  };
+type RoundBetAggregate__485557019 =
+  {numbers : [(BetNumber__58783029, Nat)]; ticketCount : Nat};
+type RoundBetAggregate__502028801 =
+  {
+    complexBets : [ComplexBet__383675630];
+    numbers : [(BetNumber__343937161, Nat)];
+    ticketCount : Nat
+  };
+type RoundBetAggregate__555254329 =
+  {
+    complexBets : [ComplexBet__616944684];
+    numbers : [(BetNumber__547733022, Nat)];
+    ticketCount : Nat
+  };
+type RoundBetAggregate__772356513 =
+  {
+    complexBets : [ComplexBet__298962855];
+    numbers : [(BetNumber__534415177, Nat)];
+    ticketCount : Nat
+  };
+type RoundHistoryEntry__1000143680 =
+  {
+    crowdfundTotal : Lucky__404091968;
+    finishedAt : Timestamp__93733298;
+    positions : [PositionBasis__594630663];
+    round : Nat;
+    totalDistributed : Lucky__404091968;
+    totalPrizePool : Lucky__404091968;
+    winningNumber : BetNumber__547733022
+  };
+type RoundHistoryEntry__1008094213 = RoundHistoryEntry__1000143680;
+type RoundHistoryEntry__248228263 =
+  {
+    crowdfundTotal : Lucky__1058331478;
+    finishedAt : Timestamp__528289002;
+    positions : [PositionBasis__849909875];
+    round : Nat;
+    totalDistributed : Lucky__1058331478;
+    totalPrizePool : Lucky__1058331478;
+    winningNumber : BetNumber__64178719
+  };
+type RoundHistoryEntry__354236913 =
+  {
+    crowdfundTotal : Lucky__848420377;
+    finishedAt : Timestamp__186131649;
+    positions : [PositionBasis__729430695];
+    round : Nat;
+    totalDistributed : Lucky__848420377;
+    totalPrizePool : Lucky__848420377;
+    winningNumber : BetNumber__343937161
+  };
+type RoundHistoryEntry__605305742 =
+  {
+    crowdfundTotal : Lucky__879448869;
+    finishedAt : Timestamp__488810885;
+    positions : [PositionBasis__164430011];
+    round : Nat;
+    totalDistributed : Lucky__879448869;
+    totalPrizePool : Lucky__879448869;
+    winningNumber : BetNumber__602429267
+  };
+type RoundHistoryEntry__618300686 =
+  {
+    crowdfundTotal : Lucky__744857294;
+    finishedAt : Timestamp__119952694;
+    positions : [PositionBasis__704394584];
+    round : Nat;
+    totalDistributed : Lucky__744857294;
+    totalPrizePool : Lucky__744857294;
+    winningNumber : BetNumber__534415177
+  };
+type RoundHistoryEntry__798274920 =
+  {
+    crowdfundTotal : Lucky__188274285;
+    finishedAt : Timestamp__771871407;
+    positions : [PositionBasis__262065762];
+    round : Nat;
+    totalDistributed : Lucky__188274285;
+    totalPrizePool : Lucky__188274285;
+    winningNumber : BetNumber__962249457
+  };
+type RoundHistoryEntry__798882448 =
+  {
+    crowdfundTotal : Lucky__148975733;
+    finishedAt : Timestamp__1022655806;
+    positions : [PositionBasis__137200606];
+    round : Nat;
+    totalDistributed : Lucky__148975733;
+    totalPrizePool : Lucky__148975733;
+    winningNumber : BetNumber__315311916
+  };
+type RoundHistoryEntry__885748767 =
+  {
+    crowdfundTotal : Lucky__324431163;
+    finishedAt : Timestamp__585882325;
+    positions : [PositionBasis__240607100];
+    round : Nat;
+    totalDistributed : Lucky__324431163;
+    totalPrizePool : Lucky__324431163;
+    winningNumber : BetNumber__58783029
+  };
+type RoundWinnings__1069378470 = {amount : Lucky__744857294; tier : ?Nat};
+type RoundWinnings__111287055 = {amount : Lucky__324431163; tier : ?Nat};
+type RoundWinnings__185763688 = {amount : Lucky__404091968; tier : ?Nat};
+type RoundWinnings__770431486 = {amount : Lucky__1058331478; tier : ?Nat};
+type RoundWinnings__800701612 = {amount : Lucky__879448869; tier : ?Nat};
+type RoundWinnings__842615173 = {amount : Lucky__848420377; tier : ?Nat};
+type RoundWinnings__950284446 = {amount : Lucky__148975733; tier : ?Nat};
+type StoredDraw__290240674 =
+  {
+    finishedAt : Timestamp__119952694;
+    round : Nat;
+    tiers : [TierResult__682576037];
+    totalDistributed : Lucky__744857294;
+    winningNumber : BetNumber__534415177
+  };
+type StoredDraw__338683802 =
+  {
+    finishedAt : Timestamp__585882325;
+    round : Nat;
+    tiers : [TierResult__453587999];
+    totalDistributed : Lucky__324431163;
+    winningNumber : BetNumber__58783029
+  };
+type StoredDraw__651697327 =
+  {
+    finishedAt : Timestamp__186131649;
+    round : Nat;
+    tiers : [TierResult__177074000];
+    totalDistributed : Lucky__848420377;
+    winningNumber : BetNumber__343937161
+  };
+type StoredDraw__731864862 =
+  {
+    finishedAt : Timestamp__771871407;
+    round : Nat;
+    tiers : [TierResult__98481775];
+    totalDistributed : Lucky__188274285;
+    winningNumber : BetNumber__962249457
+  };
+type StoredDraw__765868276 =
+  {
+    finishedAt : Timestamp__528289002;
+    round : Nat;
+    tiers : [TierResult__593458222];
+    totalDistributed : Lucky__1058331478;
+    winningNumber : BetNumber__64178719
+  };
+type StoredDraw__790481867 =
+  {
+    finishedAt : Timestamp__1022655806;
+    round : Nat;
+    tiers : [TierResult__257047426];
+    totalDistributed : Lucky__148975733;
+    winningNumber : BetNumber__315311916
+  };
+type StoredDraw__868663217 =
+  {
+    finishedAt : Timestamp__488810885;
+    round : Nat;
+    tiers : [TierResult__237143498];
+    totalDistributed : Lucky__879448869;
+    winningNumber : BetNumber__602429267
+  };
+type StoredDraw__90656099 =
+  {
+    finishedAt : Timestamp__467031675;
+    round : Nat;
+    tiers : [TierResult__882947191];
+    totalDistributed : Lucky__335479488;
+    winningNumber : BetNumber__31378595
+  };
+type TierResult__177074000 =
+  {
+    distributed : Lucky__848420377;
+    payoutPerTicket : Lucky__848420377;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__237143498 =
+  {
+    distributed : Lucky__879448869;
+    payoutPerTicket : Lucky__879448869;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__257047426 =
+  {
+    distributed : Lucky__148975733;
+    payoutPerTicket : Lucky__148975733;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__453587999 =
+  {
+    distributed : Lucky__324431163;
+    payoutPerTicket : Lucky__324431163;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__593458222 =
+  {
+    distributed : Lucky__1058331478;
+    payoutPerTicket : Lucky__1058331478;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__682576037 =
+  {
+    distributed : Lucky__744857294;
+    payoutPerTicket : Lucky__744857294;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__882947191 =
+  {
+    distributed : Lucky__404091968;
+    payoutPerTicket : Lucky__404091968;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type TierResult__98481775 =
+  {
+    distributed : Lucky__188274285;
+    payoutPerTicket : Lucky__188274285;
+    tier : Nat;
+    winningTickets : Nat
+  };
+type Timestamp__1022655806 = Int;
+type Timestamp__119952694 = Int;
+type Timestamp__186131649 = Int;
+type Timestamp__301639476 = Int;
+type Timestamp__467031675 = Timestamp__301639476;
+type Timestamp__488810885 = Int;
+type Timestamp__528289002 = Int;
+type Timestamp__585882325 = Int;
+type Timestamp__600497786 = Timestamp__301639476;
+type Timestamp__771871407 = Int;
+type Timestamp__837721220 = Timestamp__301639476;
+type Timestamp__93733298 = Timestamp__301639476;
+type TopBets__215618448 =
+  {
+    var counts : Map__230067015<BetNumber__58783029, Nat>;
+    var order : List__836382695<BetNumber__58783029>
+  };
+type TopBets__345102661 =
+  {
+    var counts : Map__230067015<BetNumber__31378595, Nat>;
+    var order : List__836382695<BetNumber__31378595>
+  };
+type TopBets__427349154 =
+  {
+    var counts : Map__230067015<BetNumber__534415177, Nat>;
+    var order : List__836382695<BetNumber__534415177>
+  };
+type TopBets__493421184 =
+  {
+    var counts : Map__230067015<BetNumber__602429267, Nat>;
+    var order : List__836382695<BetNumber__602429267>
+  };
+type TopBets__607211301 =
+  {
+    var counts : Map__230067015<BetNumber__343937161, Nat>;
+    var order : List__836382695<BetNumber__343937161>
+  };
+type TopBets__802155643 =
+  {
+    var counts : Map__230067015<BetNumber__64178719, Nat>;
+    var order : List__836382695<BetNumber__64178719>
+  };
+type TopBets__873478237 =
+  {
+    var counts : Map__230067015<BetNumber__315311916, Nat>;
+    var order : List__836382695<BetNumber__315311916>
+  };
+type TransactionKind__1049545816 =
+  {#approve; #mint; #transfer; #transferFrom};
+type TransactionKind__355820869 = {#approve; #mint; #transfer; #transferFrom};
+type Transaction__200483973 =
+  {
+    amount : Lucky__744857294;
+    fee : Lucky__744857294;
+    from : ?Account__102966845;
+    index : Nat;
+    kind : TransactionKind__1049545816;
+    memo : ?Blob;
+    timestamp : Timestamp__119952694;
+    to : ?Account__102966845
+  };
+type Transaction__626228322 =
+  {
+    amount : Lucky__319762161;
+    fee : Lucky__319762161;
+    from : ?Account__383935140;
+    index : Nat;
+    kind : TransactionKind__355820869;
+    memo : ?Blob;
+    timestamp : Timestamp__837721220;
+    to : ?Account__383935140
+  };
+type TransferAsset__1072168224 = {#icp; #lucky};
+type TransferAsset__348100099 = {#icp; #lucky};
+type TransferAsset__35378290 = {#icp; #lucky};
+type TransferAsset__431844129 = {#icp; #lucky};
+type TransferAsset__884203522 = {#icp; #lucky};
+type TransferDirection__109525688 = {#incoming; #outgoing};
+type TransferDirection__366802417 = {#incoming; #outgoing};
+type TransferDirection__371148140 = {#incoming; #outgoing};
+type TransferDirection__827395493 = {#incoming; #outgoing};
+type TransferDirection__940193554 = {#incoming; #outgoing};
+type TransferStatus__275269955 = {#completed; #failed; #pending};
+type TransferStatus__342746940 = {#completed; #failed; #pending};
+type TransferStatus__513758159 = {#completed; #failed; #pending};
+type TransferStatus__551532594 = {#completed; #failed; #pending};
+type TransferStatus__940245333 = {#completed; #failed; #pending};
+type UserRole__91647283 = {#admin; #guest; #user};
+type WalletTransferRecord__486122419 =
+  {
+    amount : Nat;
+    asset : TransferAsset__35378290;
+    counterparty : Principal;
+    createdAt : Timestamp__119952694;
+    direction : TransferDirection__109525688;
+    fee : Nat;
+    id : Nat;
+    status : TransferStatus__342746940
+  };
+type WalletTransferRecord__57838666 =
+  {
+    amount : Nat;
+    asset : TransferAsset__1072168224;
+    counterparty : Principal;
+    createdAt : Timestamp__600497786;
+    direction : TransferDirection__366802417;
+    fee : Nat;
+    id : Nat;
+    status : TransferStatus__551532594
+  };
+type WalletTransferRecord__70129867 =
+  {
+    amount : Nat;
+    asset : TransferAsset__431844129;
+    counterparty : Principal;
+    createdAt : Timestamp__488810885;
+    direction : TransferDirection__827395493;
+    fee : Nat;
+    id : Nat;
+    status : TransferStatus__940245333
+  };
+type WalletTransferRecord__736460878 =
+  {
+    amount : Nat;
+    asset : TransferAsset__884203522;
+    counterparty : Principal;
+    createdAt : Timestamp__186131649;
+    direction : TransferDirection__371148140;
+    fee : Nat;
+    id : Nat;
+    status : TransferStatus__513758159
+  };
+type WalletTransferRecord__867309832 =
+  {
+    amount : Nat;
+    asset : TransferAsset__348100099;
+    counterparty : Principal;
+    createdAt : Timestamp__1022655806;
+    direction : TransferDirection__940193554;
+    fee : Nat;
+    id : Nat;
+    status : TransferStatus__275269955
+  };
+type WinRecord__102359353 =
+  {
+    claimedAt : Timestamp__488810885;
+    number : BetNumber__602429267;
+    payout : Lucky__879448869;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__275365756 =
+  {
+    claimedAt : Timestamp__585882325;
+    number : BetNumber__58783029;
+    payout : Lucky__324431163;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__287607853 =
+  {
+    claimedAt : Timestamp__186131649;
+    number : BetNumber__343937161;
+    payout : Lucky__848420377;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__416879402 =
+  {
+    claimedAt : Timestamp__1022655806;
+    number : BetNumber__315311916;
+    payout : Lucky__148975733;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__595516732 =
+  {
+    claimedAt : Timestamp__528289002;
+    number : BetNumber__64178719;
+    payout : Lucky__1058331478;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__63604171 =
+  {
+    claimedAt : Timestamp__771871407;
+    number : BetNumber__962249457;
+    payout : Lucky__188274285;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__744330970 =
+  {
+    claimedAt : Timestamp__119952694;
+    number : BetNumber__534415177;
+    payout : Lucky__744857294;
+    round : Nat;
+    tier : Nat
+  };
+type WinRecord__749737616 =
+  {
+    claimedAt : Timestamp__93733298;
+    number : BetNumber__547733022;
+    payout : Lucky__404091968;
+    round : Nat;
+    tier : Nat
+  };
+{
+  "00000000_000000" : OldActor__512397517 -> NewActor__769816496;
+  "20260928_120000" : (old : OldActor__854227490) -> NewActor__102844085;
+  "20260929_120000" : (old : OldActor__894826810) -> NewActor__365537071;
+  "20261001_120000" : (old : OldActor__112540865) -> NewActor__1045774320;
+  "20261002_120000" : (old : OldActor__903749565) -> NewActor__483640311;
+  "20261003_120000" : (old : OldActor__366068089) -> NewActor__185423693;
+  "20261004_120000" : (old : OldActor__204222165) -> NewActor__68623567
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable gameState :
+    {
+      var complexBets : List__836382695<ComplexBet__616944684>;
+      var crowdfundTotal : Lucky__335479488;
+      var dailyStats : Map__230067015<Text, DailyStats__143887938>;
+      var draws : Map__230067015<Nat, StoredDraw__90656099>;
+      var exchangePoolIcp : IcpE8s__919817650;
+      var exchangePoolLucky : Lucky__335479488;
+      var guideText : Text;
+      var history : List__836382695<RoundHistoryEntry__1008094213>;
+      var luckyLedger : LedgerState__1009748330;
+      var nextTransferId : Nat;
+      var players : Map__230067015<Principal, PlayerAccount__1027814942>;
+      var positions : [var PositionFund__728394917];
+      var round : Nat;
+      var roundStart : Timestamp__467031675;
+      var roundStopped : Bool;
+      var tally : Map__230067015<BetNumber__31378595, Nat>;
+      var topBets : TopBets__345102661;
+      var totalPrizePool : Lucky__335479488;
+      var treasuryBalance : Lucky__335479488;
+      var walletTransfers :
+        Map__230067015<Principal,
+                        List__836382695<WalletTransferRecord__57838666>>;
+      var winningNumber : ?BetNumber__31378595
+    }
+};

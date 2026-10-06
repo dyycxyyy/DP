@@ -1,0 +1,424 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Bilingual stacks: Latin face first, CJK fallback second.
+       Latin-only metrics must never be assumed for zh-CN copy. */
+    --font-display: "Space Grotesk", "PingFang SC", "Hiragino Sans GB",
+      "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    --font-body: "DM Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+      "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", "Menlo", "PingFang SC",
+      "Microsoft YaHei", "Noto Sans SC", monospace;
+    --radius: 0.5rem;
+
+    /* ---- Mobile terminal ergonomics ---- */
+    --tap-min: 2.75rem; /* 44px minimum touch target */
+    --tap-comfortable: 3rem; /* 48px primary actions */
+    --tap-digit: 2.75rem; /* 0-9 crowdfunding keypad cell */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+    --tabbar-h: 3.5rem; /* fixed bottom tab bar height */
+    --statusbar-h: 3.25rem; /* sticky top status strip height */
+
+    /* ---- Light theme: paper terminal ---- */
+    --background: 0.975 0.004 250;
+    --foreground: 0.19 0.02 260;
+    --card: 1.0 0 0;
+    --card-foreground: 0.19 0.02 260;
+    --popover: 1.0 0 0;
+    --popover-foreground: 0.19 0.02 260;
+
+    --primary: 0.58 0.15 68;
+    --primary-foreground: 0.99 0.005 68;
+
+    --secondary: 0.94 0.008 250;
+    --secondary-foreground: 0.28 0.02 260;
+    --muted: 0.94 0.008 250;
+    --muted-foreground: 0.5 0.015 258;
+
+    --accent: 0.56 0.12 205;
+    --accent-foreground: 0.99 0.005 205;
+
+    --destructive: 0.53 0.2 25;
+    --destructive-foreground: 0.99 0.005 25;
+    --success: 0.52 0.15 152;
+    --success-foreground: 0.99 0.005 152;
+    --warning: 0.66 0.15 80;
+    --warning-foreground: 0.2 0.03 80;
+    --info: 0.55 0.13 245;
+    --info-foreground: 0.99 0.005 245;
+
+    /* Money / prize-pool gold */
+    --gold: 0.6 0.16 70;
+    --gold-foreground: 0.99 0.005 70;
+    /* Crowdfunding cyan */
+    --crowd: 0.55 0.11 205;
+    --crowd-foreground: 0.99 0.005 205;
+    /* Phase: betting open */
+    --phase-bet: 0.62 0.17 62;
+    --phase-bet-foreground: 0.99 0.005 62;
+    /* Phase: crowdfunding open */
+    --phase-crowd: 0.55 0.11 205;
+    --phase-crowd-foreground: 0.99 0.005 205;
+    /* Phase: drawing */
+    --phase-draw: 0.53 0.15 152;
+    --phase-draw-foreground: 0.99 0.005 152;
+    /* Phase: paying out */
+    --phase-pay: 0.55 0.2 330;
+    --phase-pay-foreground: 0.99 0.005 330;
+
+    --border: 0.89 0.006 250;
+    --input: 0.89 0.006 250;
+    --ring: 0.58 0.15 68;
+
+    --chart-1: 0.62 0.17 62;
+    --chart-2: 0.55 0.11 205;
+    --chart-3: 0.53 0.15 152;
+    --chart-4: 0.55 0.2 330;
+    --chart-5: 0.5 0.14 262;
+
+    --sidebar: 0.955 0.006 250;
+    --sidebar-foreground: 0.19 0.02 260;
+    --sidebar-primary: 0.58 0.15 68;
+    --sidebar-primary-foreground: 0.99 0.005 68;
+    --sidebar-accent: 0.92 0.008 250;
+    --sidebar-accent-foreground: 0.28 0.02 260;
+    --sidebar-border: 0.89 0.006 250;
+    --sidebar-ring: 0.58 0.15 68;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.62 0.18 58),
+      oklch(0.6 0.16 78)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.99 0.004 250),
+      oklch(0.955 0.006 250)
+    );
+    --grid-line: oklch(0.19 0.02 260 / 0.05);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-snap: all 0.16s cubic-bezier(0.2, 0, 0, 1);
+
+    /* Bottom-sheet (crowdfunding amount dialog) */
+    --sheet-scrim: oklch(0.1 0.01 258 / 0.72);
+    --sheet-handle: oklch(0.94 0.008 250 / 0.22);
+
+    /* Sign-in prompt banner (unauthenticated submit) */
+    --prompt-bg: oklch(0.24 0.05 70 / 0.35);
+    --prompt-border: oklch(0.79 0.15 70 / 0.5);
+
+    /* Language toggle */
+    --toggle-track: 0.225 0.018 258;
+    --toggle-thumb: 0.79 0.15 70;
+  }
+
+  .dark {
+    /* ---- Dark theme (primary): the arena terminal ---- */
+    --background: 0.135 0.014 258;
+    --foreground: 0.94 0.008 250;
+    --card: 0.175 0.016 258;
+    --card-foreground: 0.94 0.008 250;
+    --popover: 0.2 0.018 258;
+    --popover-foreground: 0.94 0.008 250;
+
+    --primary: 0.79 0.15 70;
+    --primary-foreground: 0.15 0.02 70;
+
+    --secondary: 0.225 0.018 258;
+    --secondary-foreground: 0.86 0.008 250;
+    --muted: 0.225 0.018 258;
+    --muted-foreground: 0.6 0.014 252;
+
+    --accent: 0.84 0.13 195;
+    --accent-foreground: 0.14 0.02 195;
+
+    --destructive: 0.62 0.21 22;
+    --destructive-foreground: 0.97 0.008 22;
+    --success: 0.72 0.17 150;
+    --success-foreground: 0.14 0.02 150;
+    --warning: 0.8 0.16 82;
+    --warning-foreground: 0.16 0.03 82;
+    --info: 0.7 0.14 245;
+    --info-foreground: 0.14 0.02 245;
+
+    --gold: 0.79 0.15 70;
+    --gold-foreground: 0.15 0.02 70;
+    --crowd: 0.84 0.13 195;
+    --crowd-foreground: 0.14 0.02 195;
+    --phase-bet: 0.79 0.15 70;
+    --phase-bet-foreground: 0.15 0.02 70;
+    --phase-crowd: 0.84 0.13 195;
+    --phase-crowd-foreground: 0.14 0.02 195;
+    --phase-draw: 0.72 0.17 150;
+    --phase-draw-foreground: 0.14 0.02 150;
+    --phase-pay: 0.68 0.2 330;
+    --phase-pay-foreground: 0.14 0.02 330;
+
+    --border: 0.28 0.018 258;
+    --input: 0.3 0.018 258;
+    --ring: 0.79 0.15 70;
+
+    --chart-1: 0.79 0.15 70;
+    --chart-2: 0.84 0.13 195;
+    --chart-3: 0.72 0.17 150;
+    --chart-4: 0.68 0.2 330;
+    --chart-5: 0.66 0.16 262;
+
+    --sidebar: 0.155 0.015 258;
+    --sidebar-foreground: 0.94 0.008 250;
+    --sidebar-primary: 0.79 0.15 70;
+    --sidebar-primary-foreground: 0.15 0.02 70;
+    --sidebar-accent: 0.225 0.018 258;
+    --sidebar-accent-foreground: 0.86 0.008 250;
+    --sidebar-border: 0.28 0.018 258;
+    --sidebar-ring: 0.79 0.15 70;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.82 0.16 62),
+      oklch(0.74 0.14 82)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.19 0.017 258),
+      oklch(0.155 0.015 258)
+    );
+    --grid-line: oklch(0.94 0.008 250 / 0.045);
+
+    --sheet-scrim: oklch(0.19 0.02 260 / 0.5);
+    --sheet-handle: oklch(0.19 0.02 260 / 0.18);
+    --prompt-bg: oklch(0.95 0.04 70 / 0.6);
+    --prompt-border: oklch(0.58 0.15 68 / 0.45);
+    --toggle-track: 0.94 0.008 250;
+    --toggle-thumb: 0.58 0.15 68;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  /* Bilingual glyph correction: CJK needs looser tracking and taller leading
+     than Latin at the same size, and must never inherit uppercase transforms. */
+  :lang(zh-CN),
+  [lang="zh-CN"] {
+    letter-spacing: 0.01em;
+    line-height: 1.7;
+    font-synthesis-weight: none;
+  }
+  :lang(zh-CN) h1,
+  :lang(zh-CN) h2,
+  :lang(zh-CN) h3,
+  [lang="zh-CN"] h1,
+  [lang="zh-CN"] h2,
+  [lang="zh-CN"] h3 {
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+  /* Latin micro-labels stay uppercase; Chinese labels must not be transformed. */
+  :lang(zh-CN) .label-caps,
+  [lang="zh-CN"] .label-caps {
+    text-transform: none;
+    letter-spacing: 0.14em;
+  }
+
+  /* iOS zoom guard: inputs must be >=16px */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 1rem;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  /* Numeric display treatment — the hero of this interface */
+  .numeric {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "zero" 1;
+    letter-spacing: -0.01em;
+  }
+
+  .numeric-display {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "zero" 1;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+
+  /* ---- Mobile-first terminal utilities ---- */
+
+  /* Fixed bottom tab bar: respects home-indicator safe area */
+  .tabbar {
+    padding-bottom: var(--safe-bottom);
+    height: calc(var(--tabbar-h) + var(--safe-bottom));
+  }
+
+  /* Sticky top status strip: respects notch / dynamic island */
+  .statusbar {
+    padding-top: var(--safe-top);
+    height: calc(var(--statusbar-h) + var(--safe-top));
+  }
+
+  /* Page shell: clears the fixed tab bar */
+  .terminal-shell {
+    padding-bottom: calc(var(--tabbar-h) + var(--safe-bottom) + 0.75rem);
+  }
+
+  /* Footer: clears the fixed tab bar so its text is never occluded */
+  .footerbar {
+    padding-bottom: calc(var(--tabbar-h) + var(--safe-bottom));
+  }
+
+  /* 44px minimum touch target, applied to any tap surface */
+  .tap-target {
+    min-height: var(--tap-min);
+    min-width: var(--tap-min);
+  }
+  .tap-comfortable {
+    min-height: var(--tap-comfortable);
+  }
+
+  /* Crowdfunding digit cell: square, thumb-sized, tap-ripple-free */
+  .digit-cell {
+    min-height: var(--tap-digit);
+    min-width: var(--tap-digit);
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  /* Crowdfunding digit pad: two columns in natural 0-9 order. The panel pad is
+     a plain two-column grid; the even-left / odd-right flanking arrangement
+     lives in the amount dialog's .digit-column rails. */
+  .digit-pad {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+  .digit-pad > * {
+    min-width: 0;
+  }
+
+  /* Amount-dialog digit rail: a single vertical column of digit cells that
+     flanks the amount input (even digits left, odd digits right). */
+  .digit-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .digit-column > * {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  /* Bottom sheet used by the crowdfunding amount dialog */
+  .sheet-scrim {
+    background-color: var(--sheet-scrim);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+  .sheet-panel {
+    padding-bottom: calc(1rem + var(--safe-bottom));
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+  }
+  .sheet-handle {
+    background-color: var(--sheet-handle);
+  }
+
+  /* Sign-in prompt banner */
+  .prompt-banner {
+    background-color: var(--prompt-bg);
+    border-color: var(--prompt-border);
+  }
+
+  /* Language toggle track/thumb */
+  .toggle-track {
+    background-color: oklch(var(--toggle-track));
+  }
+  .toggle-thumb {
+    background-color: oklch(var(--toggle-thumb));
+  }
+
+  .transition-snap {
+    transition: var(--transition-snap);
+  }
+
+  /* Horizontal scroll rail for dense digit grids on narrow screens */
+  .rail-x {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .rail-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Horizontal safe-area inset for full-bleed rows on notched phones */
+  .safe-x {
+    padding-left: max(0.75rem, var(--safe-left));
+    padding-right: max(0.75rem, var(--safe-right));
+  }
+
+  /* Dense digit grid: 10 columns that shrink to fit 375px without overflow.
+     Each cell keeps a 44px tap target via the row's min-height. */
+  .digit-grid {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 0.125rem;
+  }
+  .digit-grid > * {
+    min-width: 0;
+  }
+}
